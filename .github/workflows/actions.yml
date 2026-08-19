@@ -11,7 +11,7 @@ jobs:
         contents: read
         packages: write
     env:
-        IMAGE_NAME: nextcloud-smb
+        IMAGE_NAME: SmbCrawler
 
     steps:
         - name: checkout
