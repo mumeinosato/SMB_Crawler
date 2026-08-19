@@ -11,7 +11,7 @@ jobs:
         contents: read
         packages: write
     env:
-        IMAGE_NAME: SmbCrawler
+        IMAGE_NAME: smb-crawler
 
     steps:
         - name: checkout
