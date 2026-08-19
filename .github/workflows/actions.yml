@@ -19,7 +19,9 @@ jobs:
 
         - name: Set Version
           id: vars
-          run: echo "VERSION=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
+          run: |
+            echo "VERSION=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
+            echo "IMAGE_REPO=ghcr.io/$(echo '${{ github.repository_owner }}/${{ env.IMAGE_NAME }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
         - name: Set up Docker Buildx
           uses: docker/setup-buildx-action@v3
@@ -37,5 +39,5 @@ jobs:
             context: .
             push: true
             tags: |
-                ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
-                ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
+                ${{ env.IMAGE_REPO }}:${{ env.VERSION }}
+                ${{ env.IMAGE_REPO }}:latest
