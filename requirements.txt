@@ -1,0 +1,3 @@
+smbprotocol
+python-dotenv
+discord.py
